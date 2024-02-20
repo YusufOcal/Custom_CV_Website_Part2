@@ -1,0 +1,25 @@
+﻿@model EntityLayer.Concrete.Feature
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("Index", "Feature", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.FeatureID)
+    <br />
+
+    @Html.Label("Öne Çıkanlar Başlığı")
+    @Html.TextBoxFor(x => x.Header, new {@class = "form-control"})
+    <br />
+    @Html.Label("Öne Çıkanlar İsim")
+    @Html.TextBoxFor(x => x.Name, new {@class = "form-control"})
+    <br />
+    @Html.Label("Öne Çıkanlar Açıklama")
+    @Html.TextBoxFor(x => x.Title, new {@class = "form-control"})
+    <br />
+    <button class="btn btn-success">Güncelle</button>
+    <a href="@Url.Action("Index", "Feature")" class="btn btn-dark">İptal</a>
+}
+<script src="~/corona-free-dark-bootstrap-admin-template-1.0.0/template/assets/vendors/js/vendor.bundle.base.js"></script>

@@ -1,0 +1,26 @@
+﻿@model EntityLayer.Concrete.WriterMessage
+
+@{
+    ViewData["Title"] = "SenderMessagesDetails";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<h3>Mesaj Detayları</h3>
+<br />
+
+<form class="form-grup">
+    @Html.HiddenFor(x => x.ID, new { @class = "form-control" })
+
+    @Html.Label("Alıcı Adı")
+    @Html.TextBoxFor(x => x.RecieverName, new { @class = "form-control" })
+    <br />
+    @Html.Label("Alıcı Mail")
+    @Html.TextBoxFor(x => x.Reciever, new { @class = "form-control" })
+    <br />
+    @Html.Label("Gönderilen Tarih")
+    @Html.TextBoxFor(x => x.Date, new { @class = "form-control" })
+    <br />
+    @Html.Label("Gönderen Adı")
+    @Html.TextAreaFor(x => x.MessageContent, 10, 4, new { @class = "form-control" })
+</form>
+

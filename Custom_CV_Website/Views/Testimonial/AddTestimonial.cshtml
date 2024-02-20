@@ -1,0 +1,43 @@
+﻿@model EntityLayer.Concrete.Testimonial
+
+@{
+    ViewData["Title"] = "AddTestimonial";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<form class="form-group" method="post">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-description"> Yeni Referans Ekleme </p>
+                <form class="forms-sample">
+                    <div class="form-group">
+                        <label>Müşteri İsmi</label>
+                        <input type="text" class="form-control" name="ClientName">
+                    </div>
+                    <div class="form-group">
+                        <label>Firma İsmi</label>
+                        <input type="text" class="form-control" name="Company">
+                    </div>
+                    <div class="form-group">
+                        <label>Yorum</label>
+                        <input type="text" class="form-control" name="Comment">
+                    </div>
+                        <div class="form-group">
+                        <label>Resim Yolu</label>
+                        <input type="text" class="form-control" name="ImageUrl">
+                    </div>
+                    <div class="form-group">
+                        <label>Ünvan</label>
+                        <input type="text" class="form-control" name="Title">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mr-2">Kaydet</button>
+                    <a href="@Url.Action("Index", "Testimonial")" class="btn btn-dark">İptal</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script src="~/corona-free-dark-bootstrap-admin-template-1.0.0/template/assets/vendors/js/vendor.bundle.base.js"></script>

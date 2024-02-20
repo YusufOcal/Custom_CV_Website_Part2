@@ -1,0 +1,53 @@
+﻿@using EntityLayer.Concrete
+@model List<WriterUser>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<div class="col-md-6">
+    <div class="p-2">
+        <button type="button" id="btngetlistall" class="btn btn-outline-primary">Verileri Getir</button>
+        <button type="button" id="btnadduser" class="btn btn-outline-primary">Kaydet</button>
+    </div>
+</div>
+
+<h4 class="text-center">Yazar Listesi</h4>
+<div class="p-2" id="listuser">
+    buraya veriler gelecek.
+</div>
+<br />
+<div class="col-md-12">
+    <input type="text" class="form-control" id="inpname" placeholder="Ad">
+    <br />
+    <input type="text" class="form-control" id="inpsurname" placeholder="Soyad">
+    <br />
+    <input type="text" class="form-control" id="inpusername" placeholder="Kullanıcı Adınız">
+    <br />
+    <input type="text" class="form-control" id="inpmail" placeholder="Mail Adres">
+
+</div>
+
+@section Scripts
+{
+    <script>
+        $("#btngetlistall").click(function() {
+            $.ajax({
+                contentType: "application/json",
+                dataType: "json",
+                type: "Get",
+                url: "/WriterUser/WriterList/",
+
+                        success: function (fnc) {
+                    let users = jQuery.parseJSON(fnc);
+                    console.log(users);
+                }
+            });
+        });
+    </script>
+}
+<script src="~/corona-free-dark-bootstrap-admin-template-1.0.0/template/assets/vendors/js/vendor.bundle.base.js"></script>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script> @* Hoacada sadece bu vardı. *@

@@ -1,0 +1,98 @@
+﻿@using EntityLayer.Concrete
+@model List<Portfolio>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col">
+        <div class="card bg-default shadow">
+            <div class="card-header bg-transparent border-0">
+                <h3 class="text-white mb-0">Projelerim</h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-dark table-flush">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col" class="sort" data-sort="name">Proje</th>
+                            <th scope="col" class="sort" data-sort="budget">Ücret</th>
+                            <th scope="col" class="sort" data-sort="status">Durum</th>
+                            <th scope="col" class="sort" data-sort="completion">İlerleme</th>
+                            <th scope="col" class="sort" data-sort="delete">Sil</th>
+                            <th scope="col" class="sort" data-sort="update">Düzenleme</th>
+                        </tr>
+                    </thead>
+                    <tbody class="list">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th scope="row">
+                                    <div class="media align-items-center">
+                                        <a href="#" class="avatar rounded-circle mr-3">
+                                            <img alt="Image placeholder" src="@item.ImageUrl1">
+                                        </a>
+                                        <div class="media-body">
+                                            <span class="name mb-0 text-sm">@item.Name</span>
+                                        </div>
+                                    </div>
+                                </th>
+                                <td class="budget">
+                                    $@item.Price USD
+                                </td>
+                                <td>
+                                    @if (item.Value == 100)
+                                    {
+                                        item.Status = "True";
+                                    }
+                                    else
+                                    {
+                                        item.Status = "False";
+                                    }
+                                    @if (item.Status == "True")
+                                    {
+                                        <div class="badge badge-outline-success">
+                                            <span class="status">Tamamlandı</span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="badge badge-outline-info">
+                                            <span class="status">Tamamlanmadı</span>
+                                        </div>
+                                    }
+                                </td>
+
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <span class="completion mr-2">@item.Value%</span>
+                                        <div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="@item.Value" aria-valuemin="0" aria-valuemax="100" style="width: @item.Value%;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <a href="/Portfolio/DeletePortfolio/@item.PortfolioID/" class="btn btn-danger">Sil</a>
+                                </td>
+                                <td>
+                                    <a href="/Portfolio/EditPortfolio/@item.PortfolioID" class="btn btn-warning">Güncelle</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <br />
+                <div style="text-align:center">
+                    <a href="/Portfolio/AddPortfolio/" class="btn btn-info" style="width:200px; height:50px; font-size:20px;">Yeni Proje Ekle</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/corona-free-dark-bootstrap-admin-template-1.0.0/template/assets/vendors/js/vendor.bundle.base.js"></script>

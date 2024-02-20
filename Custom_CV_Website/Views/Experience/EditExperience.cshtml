@@ -1,0 +1,43 @@
+﻿@model EntityLayer.Concrete.Experience
+
+@{
+    ViewData["Title"] = "EditExperience";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("EditExperience", "Experience", FormMethod.Post))
+{
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-description"> Deneyim Düzenleme </p>
+                <form class="forms-sample">
+                    <div class="form-group">
+                        <label>ID</label>
+                        @Html.TextBoxFor(x => x.ExperienceID , new { @class="form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>Başlık</label>
+                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>Tarih</label>
+                        @Html.TextBoxFor(x => x.Date, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>Görsel URL</label>
+                        @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>Açıklama</label>
+                        @Html.TextAreaFor(x => x.Description, 6, 3, new { @class = "form-control" })
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Kaydet</button>
+                    <a href="@Url.Action("Index", "Experience")" class="btn btn-dark">İptal</a>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+
+<script src="~/corona-free-dark-bootstrap-admin-template-1.0.0/template/assets/vendors/js/vendor.bundle.base.js"></script>

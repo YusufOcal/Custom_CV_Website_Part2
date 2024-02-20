@@ -1,0 +1,48 @@
+﻿@using EntityLayer.Concrete
+@model List<Testimonial>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<div class="row ">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Referans Listesi</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th> # </th>
+                                <th> Ad-Soyad </th>
+                                <th style ="text-align:center;"> Firma </th>
+                                <th style="text-align:center;"> Ünvan </th>
+                                <th> Sil </th>
+                                <th> Detaylar </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <img src="@item.ImageUrl" alt="image" />
+                                    </td>
+                                    <td> @item.ClientName </td>
+                                    <td> @item.Company </td>
+                                    <td> @item.Title </td>
+                                    <td><a href="/Testimonial/DeleteTestimonial/@item.TestimonialID" class="btn btn-outline-danger">Sil</a></td>
+                                    <td><a href="/Testimonial/EditTestimonial/@item.TestimonialID" class="btn btn-outline-warning">Detaylar</a> </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>              
+            </div>
+            <a href="/Testimonial/AddTestimonial/" class="btn btn-info" style="height:40px; text-align:center;">Yeni Referans Ekle</a>
+        </div>
+    </div>
+</div>
+<script src="~/corona-free-dark-bootstrap-admin-template-1.0.0/template/assets/vendors/js/vendor.bundle.base.js"></script>
